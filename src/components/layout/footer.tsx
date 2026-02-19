@@ -4,7 +4,7 @@ import { Phone, Mail, MapPin, Facebook, Twitter, Linkedin, Instagram } from "luc
 export function Footer() {
   return (
     <footer className="bg-gray-900 text-white">
-      <div className="container py-12">
+      <div className="container mx-auto max-w-5xl py-12">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {/* Company Info */}
           <div className="space-y-4">
@@ -51,11 +51,6 @@ export function Footer() {
               <li>
                 <Link href="/test-preparation" className="text-gray-300 hover:text-white transition-colors text-sm">
                   Test Preparation
-                </Link>
-              </li>
-              <li>
-                <Link href="/student-portal" className="text-gray-300 hover:text-white transition-colors text-sm">
-                  Student Portal
                 </Link>
               </li>
               <li>
@@ -124,11 +119,11 @@ export function Footer() {
 
       {/* Bottom Bar */}
       <div className="border-t border-gray-800">
-        <div className="container py-4 flex flex-col md:flex-row justify-between items-center">
+        <div className="container mx-auto max-w-5xl py-4 flex flex-col items-center justify-between gap-2 text-center md:flex-row md:text-left">
           <p className="text-gray-400 text-sm">
             © 2024 Unitrans Visa Solutions. All rights reserved.
           </p>
-          <div className="flex space-x-4 mt-2 md:mt-0">
+          <div className="flex space-x-4">
             <Link href="/privacy" className="text-gray-400 hover:text-white transition-colors text-sm">
               Privacy Policy
             </Link>

@@ -7,10 +7,10 @@ import Link from "next/link"
 export function Hero() {
   return (
     <section className="relative bg-gradient-to-br from-blue-50 to-indigo-100 py-20 lg:py-32">
-      <div className="container">
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
+      <div className="container mx-auto max-w-5xl">
+        <div className="grid items-center gap-12 lg:grid-cols-2">
           {/* Left Content */}
-          <div className="space-y-8">
+          <div className="space-y-8 text-center lg:text-left">
             <div className="space-y-4">
               <div className="inline-flex items-center rounded-full border border-gray-200 bg-gray-50 px-2.5 py-0.5 text-xs font-semibold text-gray-700">
                 Trusted by 5000+ Students
@@ -19,7 +19,7 @@ export function Hero() {
                 Study, Work & Travel Abroad with
                 <span className="text-blue-600"> Expert Guidance</span>
               </h1>
-              <p className="text-xl text-gray-600 leading-relaxed">
+              <p className="mx-auto max-w-xl text-xl leading-relaxed text-gray-600 lg:mx-0">
                 Transform your dreams into reality with Unitrans Visa Solutions. 
                 Your trusted partner for international education and visa success.
               </p>

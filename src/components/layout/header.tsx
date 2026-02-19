@@ -40,13 +40,10 @@ export function Header() {
 
         {/* Desktop CTA */}
         <div className="hidden md:flex items-center space-x-3">
-          <Button variant="outline" size="sm" asChild>
-            <Link href="/student-portal">
-              Student Portal
+          <Button size="sm" asChild>
+            <Link href="/consultation">
+              Free Consultation
             </Link>
-          </Button>
-          <Button size="sm">
-            Free Consultation
           </Button>
         </div>
 
@@ -81,13 +78,10 @@ export function Header() {
               Contact
             </Link>
             <div className="pt-3 space-y-2">
-              <Button variant="outline" size="sm" className="w-full" asChild>
-                <Link href="/student-portal">
-                  Student Portal
+              <Button size="sm" className="w-full" asChild>
+                <Link href="/consultation">
+                  Free Consultation
                 </Link>
-              </Button>
-              <Button size="sm" className="w-full">
-                Free Consultation
               </Button>
             </div>
           </div>
