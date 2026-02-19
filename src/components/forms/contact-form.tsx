@@ -3,6 +3,7 @@
 import { useState } from "react"
 import { Card } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
+import { Input } from "@/components/ui/input"
 import { CheckCircle, AlertCircle } from "lucide-react"
 import {
   validateContactForm,
@@ -83,13 +84,13 @@ export function ContactForm() {
   return (
     <>
       {state === "success" && (
-        <div className="mb-6 p-4 bg-emerald-50 border border-emerald-200 rounded-lg flex items-start space-x-3">
-          <CheckCircle className="h-6 w-6 text-emerald-600 flex-shrink-0 mt-0.5" />
+        <div className="mb-6 p-4 bg-green-50 border border-green-200 rounded-lg flex items-start space-x-3">
+          <CheckCircle className="h-6 w-6 text-green-600 flex-shrink-0 mt-0.5" />
           <div>
-            <h3 className="font-semibold text-emerald-900">
+            <h3 className="font-semibold text-green-900">
               Message Sent Successfully!
             </h3>
-            <p className="text-emerald-700 text-sm mt-1">
+            <p className="text-green-700 text-sm mt-1">
               Thank you for contacting us. We'll get back to you as soon as possible.
             </p>
           </div>
@@ -97,13 +98,13 @@ export function ContactForm() {
       )}
 
       {state === "error" && Object.keys(errors).length > 0 && (
-        <div className="mb-6 p-4 bg-red-50 border border-red-200 rounded-lg flex items-start space-x-3">
-          <AlertCircle className="h-6 w-6 text-red-600 flex-shrink-0 mt-0.5" />
+        <div className="mb-6 p-4 bg-destructive/10 border border-destructive/20 rounded-lg flex items-start space-x-3">
+          <AlertCircle className="h-6 w-6 text-destructive flex-shrink-0 mt-0.5" />
           <div>
-            <h3 className="font-semibold text-red-900">
+            <h3 className="font-semibold text-destructive">
               Please fix the errors below
             </h3>
-            <ul className="text-red-700 text-sm mt-2 list-disc list-inside space-y-1">
+            <ul className="text-destructive text-sm mt-2 list-disc list-inside space-y-1">
               {Object.values(errors).map((error, index) => (
                 <li key={index}>{error}</li>
               ))}
@@ -116,24 +117,20 @@ export function ContactForm() {
         <form onSubmit={handleSubmit} className="space-y-6">
           {/* Name Field */}
           <div>
-            <label htmlFor="name" className="block text-sm font-medium text-gray-900 mb-2">
+            <label htmlFor="name" className="block text-sm font-medium text-foreground mb-2">
               Full Name *
             </label>
-            <input
+            <Input
               id="name"
               type="text"
               name="name"
               value={formData.name || ""}
               onChange={handleChange}
               placeholder="Your name"
-              className={`w-full px-4 py-2.5 border rounded-lg focus:ring-2 focus:ring-blue-600 focus:border-transparent transition-colors ${
-                getFieldError("name")
-                  ? "border-red-500 bg-red-50"
-                  : "border-gray-300"
-              }`}
+              aria-invalid={!!getFieldError("name")}
             />
             {getFieldError("name") && (
-              <p className="text-red-600 text-sm mt-1">
+              <p className="text-destructive text-sm mt-1">
                 {getFieldError("name")}
               </p>
             )}
@@ -141,24 +138,20 @@ export function ContactForm() {
 
           {/* Email Field */}
           <div>
-            <label htmlFor="email" className="block text-sm font-medium text-gray-900 mb-2">
+            <label htmlFor="email" className="block text-sm font-medium text-foreground mb-2">
               Email Address *
             </label>
-            <input
+            <Input
               id="email"
               type="email"
               name="email"
               value={formData.email || ""}
               onChange={handleChange}
               placeholder="your@email.com"
-              className={`w-full px-4 py-2.5 border rounded-lg focus:ring-2 focus:ring-blue-600 focus:border-transparent transition-colors ${
-                getFieldError("email")
-                  ? "border-red-500 bg-red-50"
-                  : "border-gray-300"
-              }`}
+              aria-invalid={!!getFieldError("email")}
             />
             {getFieldError("email") && (
-              <p className="text-red-600 text-sm mt-1">
+              <p className="text-destructive text-sm mt-1">
                 {getFieldError("email")}
               </p>
             )}
@@ -166,24 +159,20 @@ export function ContactForm() {
 
           {/* Subject Field */}
           <div>
-            <label htmlFor="subject" className="block text-sm font-medium text-gray-900 mb-2">
+            <label htmlFor="subject" className="block text-sm font-medium text-foreground mb-2">
               Subject *
             </label>
-            <input
+            <Input
               id="subject"
               type="text"
               name="subject"
               value={formData.subject || ""}
               onChange={handleChange}
               placeholder="How can we help you?"
-              className={`w-full px-4 py-2.5 border rounded-lg focus:ring-2 focus:ring-blue-600 focus:border-transparent transition-colors ${
-                getFieldError("subject")
-                  ? "border-red-500 bg-red-50"
-                  : "border-gray-300"
-              }`}
+              aria-invalid={!!getFieldError("subject")}
             />
             {getFieldError("subject") && (
-              <p className="text-red-600 text-sm mt-1">
+              <p className="text-destructive text-sm mt-1">
                 {getFieldError("subject")}
               </p>
             )}
@@ -192,10 +181,10 @@ export function ContactForm() {
           {/* Message Field */}
           <div>
             <div className="flex items-center justify-between mb-2">
-              <label htmlFor="message" className="block text-sm font-medium text-gray-900">
+              <label htmlFor="message" className="block text-sm font-medium text-foreground">
                 Message *
               </label>
-              <span className="text-xs text-gray-500">
+              <span className="text-xs text-muted-foreground">
                 {messageLength}/1000
               </span>
             </div>
@@ -207,14 +196,10 @@ export function ContactForm() {
               placeholder="Tell us more about your inquiry..."
               rows={5}
               maxLength={1000}
-              className={`w-full px-4 py-2.5 border rounded-lg focus:ring-2 focus:ring-blue-600 focus:border-transparent transition-colors resize-none ${
-                getFieldError("message")
-                  ? "border-red-500 bg-red-50"
-                  : "border-gray-300"
-              }`}
+              className="w-full px-4 py-2.5 border border-input rounded-lg bg-background text-foreground focus:ring-2 focus:ring-ring focus:border-transparent transition-colors resize-none placeholder:text-muted-foreground focus-visible:outline-none disabled:cursor-not-allowed disabled:opacity-50"
             />
             {getFieldError("message") && (
-              <p className="text-red-600 text-sm mt-1">
+              <p className="text-destructive text-sm mt-1">
                 {getFieldError("message")}
               </p>
             )}
@@ -224,7 +209,7 @@ export function ContactForm() {
           <Button
             type="submit"
             disabled={state === "submitting"}
-            className="w-full py-3"
+            className="w-full"
           >
             {state === "submitting"
               ? "Sending..."
@@ -232,7 +217,7 @@ export function ContactForm() {
           </Button>
 
           {/* Disclaimer */}
-          <p className="text-xs text-gray-500 text-center">
+          <p className="text-xs text-muted-foreground/75 text-center">
             We'll respond to your message within 24 hours during business days.
           </p>
         </form>

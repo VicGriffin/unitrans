@@ -3,6 +3,7 @@
 import { useState } from "react"
 import { Card } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
+import { Input } from "@/components/ui/input"
 import { Badge } from "@/components/ui/badge"
 import { CheckCircle, AlertCircle } from "lucide-react"
 import {
@@ -90,13 +91,13 @@ export function ConsultationForm() {
   return (
     <>
       {state === "success" && (
-        <div className="mb-6 p-4 bg-emerald-50 border border-emerald-200 rounded-lg flex items-start space-x-3">
-          <CheckCircle className="h-6 w-6 text-emerald-600 flex-shrink-0 mt-0.5" />
+        <div className="mb-6 p-4 bg-green-50 border border-green-200 rounded-lg flex items-start space-x-3">
+          <CheckCircle className="h-6 w-6 text-green-600 flex-shrink-0 mt-0.5" />
           <div>
-            <h3 className="font-semibold text-emerald-900">
+            <h3 className="font-semibold text-green-900">
               Consultation Requested Successfully!
             </h3>
-            <p className="text-emerald-700 text-sm mt-1">
+            <p className="text-green-700 text-sm mt-1">
               Thank you for your interest. Our team will contact you shortly to confirm your appointment.
             </p>
           </div>
@@ -104,13 +105,13 @@ export function ConsultationForm() {
       )}
 
       {state === "error" && Object.keys(errors).length > 0 && (
-        <div className="mb-6 p-4 bg-red-50 border border-red-200 rounded-lg flex items-start space-x-3">
-          <AlertCircle className="h-6 w-6 text-red-600 flex-shrink-0 mt-0.5" />
+        <div className="mb-6 p-4 bg-destructive/10 border border-destructive/20 rounded-lg flex items-start space-x-3">
+          <AlertCircle className="h-6 w-6 text-destructive flex-shrink-0 mt-0.5" />
           <div>
-            <h3 className="font-semibold text-red-900">
+            <h3 className="font-semibold text-destructive">
               Please fix the errors below
             </h3>
-            <ul className="text-red-700 text-sm mt-2 list-disc list-inside space-y-1">
+            <ul className="text-destructive text-sm mt-2 list-disc list-inside space-y-1">
               {Object.values(errors).map((error, index) => (
                 <li key={index}>{error}</li>
               ))}
@@ -124,48 +125,40 @@ export function ConsultationForm() {
           {/* Name Fields */}
           <div className="grid md:grid-cols-2 gap-6">
             <div>
-              <label htmlFor="firstName" className="block text-sm font-medium text-gray-900 mb-2">
+              <label htmlFor="firstName" className="block text-sm font-medium text-foreground mb-2">
                 First Name *
               </label>
-              <input
+              <Input
                 id="firstName"
                 type="text"
                 name="firstName"
                 value={formData.firstName || ""}
                 onChange={handleChange}
                 placeholder="John"
-                className={`w-full px-4 py-2.5 border rounded-lg focus:ring-2 focus:ring-blue-600 focus:border-transparent transition-colors ${
-                  getFieldError("firstName")
-                    ? "border-red-500 bg-red-50"
-                    : "border-gray-300"
-                }`}
+                aria-invalid={!!getFieldError("firstName")}
               />
               {getFieldError("firstName") && (
-                <p className="text-red-600 text-sm mt-1">
+                <p className="text-destructive text-sm mt-1">
                   {getFieldError("firstName")}
                 </p>
               )}
             </div>
 
             <div>
-              <label htmlFor="lastName" className="block text-sm font-medium text-gray-900 mb-2">
+              <label htmlFor="lastName" className="block text-sm font-medium text-foreground mb-2">
                 Last Name *
               </label>
-              <input
+              <Input
                 id="lastName"
                 type="text"
                 name="lastName"
                 value={formData.lastName || ""}
                 onChange={handleChange}
                 placeholder="Doe"
-                className={`w-full px-4 py-2.5 border rounded-lg focus:ring-2 focus:ring-blue-600 focus:border-transparent transition-colors ${
-                  getFieldError("lastName")
-                    ? "border-red-500 bg-red-50"
-                    : "border-gray-300"
-                }`}
+                aria-invalid={!!getFieldError("lastName")}
               />
               {getFieldError("lastName") && (
-                <p className="text-red-600 text-sm mt-1">
+                <p className="text-destructive text-sm mt-1">
                   {getFieldError("lastName")}
                 </p>
               )}
@@ -175,48 +168,40 @@ export function ConsultationForm() {
           {/* Email and Phone */}
           <div className="grid md:grid-cols-2 gap-6">
             <div>
-              <label htmlFor="email" className="block text-sm font-medium text-gray-900 mb-2">
+              <label htmlFor="email" className="block text-sm font-medium text-foreground mb-2">
                 Email Address *
               </label>
-              <input
+              <Input
                 id="email"
                 type="email"
                 name="email"
                 value={formData.email || ""}
                 onChange={handleChange}
                 placeholder="john@example.com"
-                className={`w-full px-4 py-2.5 border rounded-lg focus:ring-2 focus:ring-blue-600 focus:border-transparent transition-colors ${
-                  getFieldError("email")
-                    ? "border-red-500 bg-red-50"
-                    : "border-gray-300"
-                }`}
+                aria-invalid={!!getFieldError("email")}
               />
               {getFieldError("email") && (
-                <p className="text-red-600 text-sm mt-1">
+                <p className="text-destructive text-sm mt-1">
                   {getFieldError("email")}
                 </p>
               )}
             </div>
 
             <div>
-              <label htmlFor="phone" className="block text-sm font-medium text-gray-900 mb-2">
+              <label htmlFor="phone" className="block text-sm font-medium text-foreground mb-2">
                 Phone Number *
               </label>
-              <input
+              <Input
                 id="phone"
                 type="tel"
                 name="phone"
                 value={formData.phone || ""}
                 onChange={handleChange}
                 placeholder="+1 (555) 000-0000"
-                className={`w-full px-4 py-2.5 border rounded-lg focus:ring-2 focus:ring-blue-600 focus:border-transparent transition-colors ${
-                  getFieldError("phone")
-                    ? "border-red-500 bg-red-50"
-                    : "border-gray-300"
-                }`}
+                aria-invalid={!!getFieldError("phone")}
               />
               {getFieldError("phone") && (
-                <p className="text-red-600 text-sm mt-1">
+                <p className="text-destructive text-sm mt-1">
                   {getFieldError("phone")}
                 </p>
               )}
@@ -226,7 +211,7 @@ export function ConsultationForm() {
           {/* Destination and Program */}
           <div className="grid md:grid-cols-2 gap-6">
             <div>
-              <label htmlFor="country" className="block text-sm font-medium text-gray-900 mb-2">
+              <label htmlFor="country" className="block text-sm font-medium text-foreground mb-2">
                 Destination Country *
               </label>
               <select
@@ -234,11 +219,7 @@ export function ConsultationForm() {
                 name="country"
                 value={formData.country || ""}
                 onChange={handleChange}
-                className={`w-full px-4 py-2.5 border rounded-lg focus:ring-2 focus:ring-blue-600 focus:border-transparent transition-colors ${
-                  getFieldError("country")
-                    ? "border-red-500 bg-red-50"
-                    : "border-gray-300"
-                }`}
+                className="w-full px-4 py-2.5 border border-input rounded-lg bg-background text-foreground focus:ring-2 focus:ring-ring focus:border-transparent transition-colors placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50"
               >
                 <option value="">Select a country...</option>
                 {COUNTRIES.map((country) => (
@@ -248,14 +229,14 @@ export function ConsultationForm() {
                 ))}
               </select>
               {getFieldError("country") && (
-                <p className="text-red-600 text-sm mt-1">
+                <p className="text-destructive text-sm mt-1">
                   {getFieldError("country")}
                 </p>
               )}
             </div>
 
             <div>
-              <label htmlFor="course" className="block text-sm font-medium text-gray-900 mb-2">
+              <label htmlFor="course" className="block text-sm font-medium text-foreground mb-2">
                 Program Level *
               </label>
               <select
@@ -263,11 +244,7 @@ export function ConsultationForm() {
                 name="course"
                 value={formData.course || ""}
                 onChange={handleChange}
-                className={`w-full px-4 py-2.5 border rounded-lg focus:ring-2 focus:ring-blue-600 focus:border-transparent transition-colors ${
-                  getFieldError("course")
-                    ? "border-red-500 bg-red-50"
-                    : "border-gray-300"
-                }`}
+                className="w-full px-4 py-2.5 border border-input rounded-lg bg-background text-foreground focus:ring-2 focus:ring-ring focus:border-transparent transition-colors placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50"
               >
                 <option value="">Select a program...</option>
                 <option value="bachelors">Bachelor's Degree</option>
@@ -277,7 +254,7 @@ export function ConsultationForm() {
                 <option value="postdoc">Post-Doctoral</option>
               </select>
               {getFieldError("course") && (
-                <p className="text-red-600 text-sm mt-1">
+                <p className="text-destructive text-sm mt-1">
                   {getFieldError("course")}
                 </p>
               )}
@@ -286,7 +263,7 @@ export function ConsultationForm() {
 
           {/* Intake */}
           <div>
-            <label htmlFor="intakeSemester" className="block text-sm font-medium text-gray-900 mb-2">
+            <label htmlFor="intakeSemester" className="block text-sm font-medium text-foreground mb-2">
               Preferred Intake *
             </label>
             <select
@@ -294,11 +271,7 @@ export function ConsultationForm() {
               name="intakeSemester"
               value={formData.intakeSemester || ""}
               onChange={handleChange}
-              className={`w-full px-4 py-2.5 border rounded-lg focus:ring-2 focus:ring-blue-600 focus:border-transparent transition-colors ${
-                getFieldError("intakeSemester")
-                  ? "border-red-500 bg-red-50"
-                  : "border-gray-300"
-              }`}
+              className="w-full px-4 py-2.5 border border-input rounded-lg bg-background text-foreground focus:ring-2 focus:ring-ring focus:border-transparent transition-colors placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50"
             >
               <option value="">Select an intake...</option>
               {INTAKES.map((intake) => (
@@ -308,7 +281,7 @@ export function ConsultationForm() {
               ))}
             </select>
             {getFieldError("intakeSemester") && (
-              <p className="text-red-600 text-sm mt-1">
+              <p className="text-destructive text-sm mt-1">
                 {getFieldError("intakeSemester")}
               </p>
             )}
@@ -316,13 +289,13 @@ export function ConsultationForm() {
 
           {/* Submit Button */}
           <div className="flex items-center justify-between pt-4">
-            <p className="text-sm text-gray-600">
+            <p className="text-sm text-muted-foreground">
               <Badge variant="outline">All fields are required</Badge>
             </p>
             <Button
               type="submit"
               disabled={state === "submitting"}
-              className="px-8 py-3"
+              className="px-8"
             >
               {state === "submitting"
                 ? "Submitting..."
@@ -331,7 +304,7 @@ export function ConsultationForm() {
           </div>
 
           {/* Disclaimer */}
-          <p className="text-xs text-gray-500 text-center pt-4">
+          <p className="text-xs text-muted-foreground/75 text-center pt-4">
             By submitting this form, you agree to our Terms of Service and Privacy Policy.
             We'll contact you shortly to schedule your consultation.
           </p>
