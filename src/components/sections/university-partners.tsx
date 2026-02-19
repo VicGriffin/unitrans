@@ -1,9 +1,13 @@
 "use client"
 
+import { useState } from "react"
 import { Card, CardContent } from "@/components/ui/card"
-import { GraduationCap } from "lucide-react"
+import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible"
+import { GraduationCap, ChevronDown, ChevronUp } from "lucide-react"
 
 export function UniversityPartners() {
+  const [showAll, setShowAll] = useState(false)
+
   const universities = [
     { name: "Coventry University", country: "United Kingdom", flag: "🇬🇧" },
     { name: "University of Bath", country: "United Kingdom", flag: "🇬🇧" },
@@ -26,6 +30,8 @@ export function UniversityPartners() {
     { name: "University of Waikato", country: "New Zealand", flag: "🇳🇿" }
   ]
 
+  const displayUniversities = showAll ? universities : universities.slice(0, 12)
+
   return (
     <section className="py-20 bg-white">
       <div className="container">
@@ -41,8 +47,8 @@ export function UniversityPartners() {
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-          {universities.map((university, index) => (
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 mb-8">
+          {displayUniversities.map((university, index) => (
             <Card key={index} className="hover:shadow-lg transition-shadow border-2 border-gray-100 hover:border-blue-200">
               <CardContent className="p-6 text-center">
                 <div className="text-3xl mb-3">{university.flag}</div>
@@ -53,7 +59,40 @@ export function UniversityPartners() {
           ))}
         </div>
 
-        <div className="text-center mt-12">
+        {/* Collapsible remaining universities */}
+        <Collapsible open={showAll} onOpenChange={setShowAll}>
+          <CollapsibleTrigger asChild>
+            <div className="text-center mb-8">
+              <button className="bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors inline-flex items-center">
+                {showAll ? (
+                  <>
+                    Show Less <ChevronUp className="ml-2 h-4 w-4" />
+                  </>
+                ) : (
+                  <>
+                    Show More Universities <ChevronDown className="ml-2 h-4 w-4" />
+                  </>
+                )}
+              </button>
+            </div>
+          </CollapsibleTrigger>
+          
+          <CollapsibleContent>
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 mb-8">
+              {universities.slice(12).map((university, index) => (
+                <Card key={index + 12} className="hover:shadow-lg transition-shadow border-2 border-gray-100 hover:border-blue-200">
+                  <CardContent className="p-6 text-center">
+                    <div className="text-3xl mb-3">{university.flag}</div>
+                    <h3 className="text-lg font-semibold text-gray-900 mb-1">{university.name}</h3>
+                    <p className="text-sm text-gray-600">{university.country}</p>
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
+          </CollapsibleContent>
+        </Collapsible>
+
+        <div className="text-center">
           <div className="bg-blue-50 rounded-2xl p-8 max-w-3xl mx-auto">
             <h3 className="text-2xl font-bold text-gray-900 mb-4">
               850+ University Partners Worldwide
