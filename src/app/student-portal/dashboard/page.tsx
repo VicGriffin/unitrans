@@ -40,77 +40,77 @@ export default function DashboardPage() {
     <div className="p-8 space-y-8">
       {/* Welcome Header */}
       <div>
-        <h1 className="text-4xl font-bold text-gray-900">
+        <h1 className="text-4xl font-bold text-foreground">
           Welcome back, {MOCK_USER.name}!
         </h1>
-        <p className="text-gray-600 mt-2">
+        <p className="text-muted-foreground mt-2">
           Here's an overview of your application status
         </p>
       </div>
 
       {/* Quick Stats */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-        <Card className="p-6">
+        <Card className="p-6 border border-border hover:border-primary/50 transition-all duration-200">
           <div className="flex items-center justify-between">
             <div>
-              <p className="text-gray-600 text-sm font-medium">
+              <p className="text-muted-foreground text-sm font-medium">
                 Active Applications
               </p>
-              <p className="text-3xl font-bold text-gray-900 mt-2">
+              <p className="text-3xl font-bold text-foreground mt-2">
                 {MOCK_APPLICATIONS.length}
               </p>
             </div>
-            <div className="h-12 w-12 bg-blue-100 rounded-full flex items-center justify-center">
-              <FileText className="h-6 w-6 text-blue-600" />
+            <div className="h-12 w-12 bg-primary/10 rounded-lg flex items-center justify-center">
+              <FileText className="h-6 w-6 text-primary" />
             </div>
           </div>
         </Card>
 
-        <Card className="p-6">
+        <Card className="p-6 border border-border hover:border-accent/50 transition-all duration-200">
           <div className="flex items-center justify-between">
             <div>
-              <p className="text-gray-600 text-sm font-medium">
+              <p className="text-muted-foreground text-sm font-medium">
                 Visa Status
               </p>
-              <p className="text-3xl font-bold text-gray-900 mt-2">
+              <p className="text-3xl font-bold text-foreground mt-2">
                 {MOCK_VISA.status.split("-").join(" ").toUpperCase()[0]}
               </p>
-              <p className="text-xs text-gray-500 mt-1">
+              <p className="text-xs text-muted-foreground mt-1">
                 {MOCK_VISA.status.split("-").join(" ")}
               </p>
             </div>
-            <div className="h-12 w-12 bg-green-100 rounded-full flex items-center justify-center">
-              <Passport className="h-6 w-6 text-green-600" />
+            <div className="h-12 w-12 bg-accent/10 rounded-lg flex items-center justify-center">
+              <Passport className="h-6 w-6 text-accent" />
             </div>
           </div>
         </Card>
 
-        <Card className="p-6">
+        <Card className="p-6 border border-border hover:border-primary/50 transition-all duration-200">
           <div className="flex items-center justify-between">
             <div>
-              <p className="text-gray-600 text-sm font-medium">
+              <p className="text-muted-foreground text-sm font-medium">
                 Upcoming Events
               </p>
-              <p className="text-3xl font-bold text-gray-900 mt-2">
+              <p className="text-3xl font-bold text-foreground mt-2">
                 {upcomingAppointments.length}
               </p>
             </div>
-            <div className="h-12 w-12 bg-purple-100 rounded-full flex items-center justify-center">
-              <Calendar className="h-6 w-6 text-purple-600" />
+            <div className="h-12 w-12 bg-primary/10 rounded-lg flex items-center justify-center">
+              <Calendar className="h-6 w-6 text-primary" />
             </div>
           </div>
         </Card>
 
-        <Card className="p-6">
+        <Card className="p-6 border border-border hover:border-secondary/50 transition-all duration-200">
           <div className="flex items-center justify-between">
             <div>
-              <p className="text-gray-600 text-sm font-medium">
+              <p className="text-muted-foreground text-sm font-medium">
                 Unread Messages
               </p>
-              <p className="text-3xl font-bold text-gray-900 mt-2">2</p>
+              <p className="text-3xl font-bold text-foreground mt-2">2</p>
             </div>
-            <div className="h-12 w-12 bg-orange-100 rounded-full flex items-center justify-center">
-              <MessageSquare className="h-6 w-6 text-orange-600" />
+            <div className="h-12 w-12 bg-secondary/10 rounded-lg flex items-center justify-center">
+              <MessageSquare className="h-6 w-6 text-secondary" />
             </div>
           </div>
         </Card>
@@ -119,7 +119,7 @@ export default function DashboardPage() {
       {/* Recent Applications */}
       <div>
         <div className="flex items-center justify-between mb-6">
-          <h2 className="text-2xl font-bold text-gray-900">
+          <h2 className="text-2xl font-bold text-foreground">
             Recent Applications
           </h2>
           <Button variant="outline" asChild>
@@ -132,30 +132,28 @@ export default function DashboardPage() {
 
         <div className="grid gap-4">
           {recentApplications.map((app) => (
-            <Card key={app.id} className="p-6">
+            <Card key={app.id} className="p-6 border border-border hover:border-primary/50 transition-all duration-200">
               <div className="flex items-start justify-between">
                 <div className="flex-1">
                   <div className="flex items-center space-x-3 mb-2">
-                    <h3 className="font-semibold text-gray-900">
+                    <h3 className="font-semibold text-foreground">
                       {app.universityName}
                     </h3>
-                    <Badge
-                      className={`bg-${getStatusColor(app.status, "application")}-100 text-${getStatusColor(app.status, "application")}-800`}
-                    >
+                    <Badge>
                       {app.status.split("-").join(" ")}
                     </Badge>
                   </div>
-                  <p className="text-sm text-gray-600 mb-2">
+                  <p className="text-sm text-muted-foreground mb-2">
                     {app.program}
                   </p>
-                  <div className="flex items-center space-x-6 text-xs text-gray-500">
+                  <div className="flex items-center space-x-6 text-xs text-muted-foreground">
                     <span>Applied: {app.appliedDate}</span>
                     <span>Deadline: {app.deadline}</span>
                     <span>Intake: {app.intakeSemester}</span>
                   </div>
                 </div>
                 {app.decision && (
-                  <Badge className="bg-emerald-100 text-emerald-800 ml-4">
+                  <Badge className="ml-4">
                     {app.decision}
                   </Badge>
                 )}
@@ -168,7 +166,7 @@ export default function DashboardPage() {
       {/* Upcoming Appointments */}
       <div>
         <div className="flex items-center justify-between mb-6">
-          <h2 className="text-2xl font-bold text-gray-900">
+          <h2 className="text-2xl font-bold text-foreground">
             Upcoming Appointments
           </h2>
           <Button variant="outline" asChild>
@@ -182,21 +180,21 @@ export default function DashboardPage() {
         {upcomingAppointments.length > 0 ? (
           <div className="grid gap-4">
             {upcomingAppointments.map((apt) => (
-              <Card key={apt.id} className="p-6">
+              <Card key={apt.id} className="p-6 border border-border hover:border-primary/50 transition-all duration-200">
                 <div className="flex items-start justify-between">
                   <div>
-                    <h3 className="font-semibold text-gray-900">
+                    <h3 className="font-semibold text-foreground">
                       {apt.type}
                     </h3>
-                    <p className="text-sm text-gray-600 mt-2">
+                    <p className="text-sm text-muted-foreground mt-2">
                       With: {apt.advisor}
                     </p>
-                    <div className="flex items-center space-x-6 text-xs text-gray-500 mt-3">
+                    <div className="flex items-center space-x-6 text-xs text-muted-foreground mt-3">
                       <span>{apt.date} at {apt.time}</span>
                       <span>{apt.location}</span>
                     </div>
                   </div>
-                  <Badge className="bg-blue-100 text-blue-800">
+                  <Badge>
                     Scheduled
                   </Badge>
                 </div>
@@ -204,8 +202,8 @@ export default function DashboardPage() {
             ))}
           </div>
         ) : (
-          <Card className="p-6 text-center">
-            <p className="text-gray-600">No upcoming appointments</p>
+          <Card className="p-6 text-center border border-border">
+            <p className="text-muted-foreground">No upcoming appointments</p>
             <Button className="mt-4" asChild>
               <Link href="/student-portal/appointments">
                 Book an Appointment

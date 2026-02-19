@@ -85,13 +85,13 @@ export function Countries() {
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
           {countries.map((country) => (
-            <Card key={country.name} className="group hover:shadow-lg transition-all duration-300 border-0 shadow-md">
+            <Card key={country.name} className="group border border-border hover:border-primary/50 transition-all duration-300 hover:shadow-md">
               <CardHeader className="pb-4">
                 <div className="flex items-start justify-between mb-3">
                   <div className="flex items-center space-x-3">
                     <span className="text-4xl">{country.flag}</span>
                     <div>
-                      <CardTitle className="text-xl group-hover:text-blue-600 transition-colors">
+                      <CardTitle className="text-lg text-foreground group-hover:text-primary transition-colors">
                         {country.name}
                       </CardTitle>
                       <Badge variant="secondary" className="mt-1 text-xs">
@@ -100,7 +100,7 @@ export function Countries() {
                     </div>
                   </div>
                 </div>
-                <CardDescription className="text-gray-600">
+                <CardDescription className="text-muted-foreground text-sm">
                   {country.description}
                 </CardDescription>
               </CardHeader>
@@ -108,26 +108,26 @@ export function Countries() {
               <CardContent className="space-y-4">
                 {/* Stats */}
                 <div className="grid grid-cols-3 gap-2 text-center">
-                  <div className="bg-blue-50 rounded-lg p-2">
-                    <Users className="h-4 w-4 text-blue-600 mx-auto mb-1" />
-                    <div className="text-xs font-semibold text-blue-900">{country.students}</div>
-                    <div className="text-xs text-gray-600">Students</div>
+                  <div className="bg-primary/10 rounded-lg p-2">
+                    <Users className="h-4 w-4 text-primary mx-auto mb-1" />
+                    <div className="text-xs font-semibold text-foreground">{country.students}</div>
+                    <div className="text-xs text-muted-foreground">Students</div>
                   </div>
-                  <div className="bg-green-50 rounded-lg p-2">
-                    <Building className="h-4 w-4 text-green-600 mx-auto mb-1" />
-                    <div className="text-xs font-semibold text-green-900">{country.universities}</div>
-                    <div className="text-xs text-gray-600">Universities</div>
+                  <div className="bg-accent/10 rounded-lg p-2">
+                    <Building className="h-4 w-4 text-accent mx-auto mb-1" />
+                    <div className="text-xs font-semibold text-foreground">{country.universities}</div>
+                    <div className="text-xs text-muted-foreground">Universities</div>
                   </div>
-                  <div className="bg-purple-50 rounded-lg p-2">
-                    <DollarSign className="h-4 w-4 text-purple-600 mx-auto mb-1" />
-                    <div className="text-xs font-semibold text-purple-900">Yearly</div>
-                    <div className="text-xs text-gray-600">Cost</div>
+                  <div className="bg-secondary/10 rounded-lg p-2">
+                    <DollarSign className="h-4 w-4 text-secondary mx-auto mb-1" />
+                    <div className="text-xs font-semibold text-foreground">Yearly</div>
+                    <div className="text-xs text-muted-foreground">Cost</div>
                   </div>
                 </div>
 
                 {/* Popular Courses */}
                 <div>
-                  <div className="text-sm font-semibold text-gray-700 mb-2">Popular Courses:</div>
+                  <div className="text-sm font-semibold text-foreground mb-2">Popular Courses:</div>
                   <div className="flex flex-wrap gap-1">
                     {country.popularCourses.map((course) => (
                       <Badge key={course} variant="outline" className="text-xs">
@@ -138,13 +138,13 @@ export function Countries() {
                 </div>
 
                 {/* Cost Range */}
-                <div className="bg-gray-50 rounded-lg p-3">
-                  <div className="text-sm text-gray-600">Average Yearly Cost:</div>
-                  <div className="font-semibold text-gray-900">{country.avgCost}</div>
+                <div className="bg-muted rounded-lg p-3">
+                  <div className="text-sm text-muted-foreground">Average Yearly Cost:</div>
+                  <div className="font-semibold text-foreground">{country.avgCost}</div>
                 </div>
 
                 {/* CTA Button */}
-                <Button className="w-full group-hover:bg-blue-600 transition-colors" asChild>
+                <Button className="w-full" asChild>
                   <Link href={`/study-abroad/${country.name.toLowerCase().replace(' ', '-')}`}>
                     Explore {country.name}
                     <ArrowRight className="ml-2 h-4 w-4" />
@@ -157,16 +157,18 @@ export function Countries() {
 
         {/* Bottom CTA */}
         <div className="text-center">
-          <div className="bg-white rounded-2xl shadow-lg p-8 max-w-2xl mx-auto">
-            <h3 className="text-2xl font-bold text-gray-900 mb-4">
+          <div className="bg-gradient-to-br from-primary/10 to-accent/10 border border-primary/20 rounded-2xl p-8 max-w-2xl mx-auto">
+            <h3 className="text-2xl font-bold text-foreground mb-4">
               Can&apos;t Find Your Country?
             </h3>
-            <p className="text-gray-600 mb-6">
+            <p className="text-muted-foreground mb-6">
               We support many more destinations including UAE, Malaysia, New Zealand, and more
             </p>
-            <Button variant="outline" size="lg">
-              View All Countries
-              <ArrowRight className="ml-2 h-4 w-4" />
+            <Button variant="outline" size="lg" asChild>
+              <Link href="/countries">
+                View All Countries
+                <ArrowRight className="ml-2 h-4 w-4" />
+              </Link>
             </Button>
           </div>
         </div>

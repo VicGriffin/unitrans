@@ -1,7 +1,9 @@
 "use client"
 
+import Link from "next/link"
 import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
+import { Button } from "@/components/ui/button"
 
 export function Partners() {
   const partners = [
@@ -23,14 +25,14 @@ export function Partners() {
   ]
 
   return (
-    <section className="py-20 bg-gray-50">
+    <section className="py-20 bg-background">
       <div className="container">
         <div className="text-center space-y-4 mb-16">
-          <h2 className="text-3xl lg:text-4xl font-bold text-gray-900">
+          <h2 className="text-3xl lg:text-4xl font-bold text-foreground">
             Trusted by
-            <span className="text-blue-600"> Top Universities</span>
+            <span className="text-primary"> Top Universities</span>
           </h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+          <p className="text-lg text-muted-foreground max-w-3xl mx-auto text-pretty">
             We have partnerships with prestigious universities worldwide to help you secure admission
           </p>
         </div>
@@ -38,12 +40,12 @@ export function Partners() {
         {/* University Partners */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-16">
           {partners.map((partner, index) => (
-            <Card key={index} className="group hover:shadow-md transition-all duration-300 border-0 bg-white">
+            <Card key={index} className="group border border-border hover:border-primary/50 transition-all duration-300 hover:shadow-md">
               <CardContent className="p-6 text-center">
                 <div className="text-4xl mb-3 group-hover:scale-110 transition-transform">
                   {partner.logo}
                 </div>
-                <h3 className="font-semibold text-gray-900 mb-2">{partner.name}</h3>
+                <h3 className="font-semibold text-foreground mb-2 text-sm">{partner.name}</h3>
                 <Badge variant="outline" className="text-xs">
                   {partner.type}
                 </Badge>
@@ -53,14 +55,14 @@ export function Partners() {
         </div>
 
         {/* Achievement Stats */}
-        <div className="bg-white rounded-2xl shadow-lg p-8">
+        <div className="bg-gradient-to-br from-primary/10 to-accent/10 border border-primary/20 rounded-2xl p-8">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
             {achievements.map((achievement, index) => (
               <div key={index} className="space-y-2">
-                <div className="text-4xl font-bold text-blue-600">
+                <div className="text-4xl font-bold text-primary">
                   {achievement.number}
                 </div>
-                <div className="text-gray-600 font-medium">
+                <div className="text-muted-foreground font-medium text-sm">
                   {achievement.label}
                 </div>
               </div>
@@ -70,20 +72,24 @@ export function Partners() {
 
         {/* CTA Section */}
         <div className="text-center mt-16">
-          <div className="bg-gradient-to-r from-blue-600 to-indigo-600 rounded-2xl p-8 text-white">
+          <div className="bg-gradient-to-r from-primary to-accent rounded-2xl p-8 text-primary-foreground">
             <h3 className="text-2xl font-bold mb-4">
               Become Our Partner University
             </h3>
-            <p className="text-blue-100 mb-6 max-w-2xl mx-auto">
+            <p className="text-primary-foreground/90 mb-6 max-w-2xl mx-auto">
               Join our network of prestigious universities and connect with talented students from Kenya and across Africa
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <button className="bg-white text-blue-600 px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors">
-                Partner With Us
-              </button>
-              <button className="border border-white text-white px-8 py-3 rounded-lg font-semibold hover:bg-white/10 transition-colors">
-                Learn More
-              </button>
+              <Button size="lg" variant="secondary" asChild>
+                <Link href="/partner">
+                  Partner With Us
+                </Link>
+              </Button>
+              <Button size="lg" variant="outline" className="text-primary-foreground border-primary-foreground hover:bg-primary-foreground/10" asChild>
+                <Link href="/partnership">
+                  Learn More
+                </Link>
+              </Button>
             </div>
           </div>
         </div>
