@@ -71,14 +71,14 @@ export function Countries() {
   ]
 
   return (
-    <section className="py-20 bg-gray-50">
+    <section className="py-20 bg-background">
       <div className="container">
         <div className="text-center space-y-4 mb-16">
-          <h2 className="text-3xl lg:text-4xl font-bold text-gray-900">
+          <h2 className="text-3xl lg:text-4xl font-bold text-foreground">
             Study in Your
-            <span className="text-blue-600"> Dream Country</span>
+            <span className="text-primary"> Dream Country</span>
           </h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+          <p className="text-lg text-muted-foreground max-w-3xl mx-auto text-pretty">
             Choose from 15+ countries with world-class universities and excellent career opportunities
           </p>
         </div>

@@ -69,33 +69,33 @@ export function Testimonials() {
   ]
 
   return (
-    <section className="py-20 bg-white">
+    <section className="py-20 bg-muted/30">
       <div className="container">
         <div className="text-center space-y-4 mb-16">
-          <h2 className="text-3xl lg:text-4xl font-bold text-gray-900">
+          <h2 className="text-3xl lg:text-4xl font-bold text-foreground">
             Student
-            <span className="text-blue-600"> Success Stories</span>
+            <span className="text-primary"> Success Stories</span>
           </h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+          <p className="text-lg text-muted-foreground max-w-3xl mx-auto text-pretty">
             Hear from our students who are now studying at their dream universities abroad
           </p>
         </div>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           {testimonials.map((testimonial, index) => (
-            <Card key={index} className="group hover:shadow-lg transition-all duration-300">
-              <CardContent className="p-6">
+            <Card key={index} className="group border border-border hover:border-primary/50 hover:shadow-md transition-all duration-300">
+              <CardContent className="p-6 space-y-4">
                 {/* Header */}
-                <div className="flex items-start justify-between mb-4">
+                <div className="flex items-start justify-between">
                   <div className="flex items-center space-x-3">
                     <img
                       src={testimonial.image}
                       alt={testimonial.name}
-                      className="h-12 w-12 rounded-full object-cover"
+                      className="h-12 w-12 rounded-full object-cover border border-border"
                     />
                     <div>
-                      <h4 className="font-semibold text-gray-900">{testimonial.name}</h4>
-                      <div className="flex items-center space-x-2 text-sm text-gray-600">
+                      <h4 className="font-semibold text-foreground text-sm">{testimonial.name}</h4>
+                      <div className="flex items-center space-x-1 text-xs text-muted-foreground">
                         <span>{testimonial.country}</span>
                         <span>•</span>
                         <span>{testimonial.course}</span>
@@ -108,24 +108,24 @@ export function Testimonials() {
                 </div>
 
                 {/* Rating */}
-                <div className="flex items-center space-x-1 mb-3">
+                <div className="flex items-center space-x-1">
                   {[...Array(testimonial.rating)].map((_, i) => (
-                    <Star key={i} className="h-4 w-4 fill-yellow-400 text-yellow-400" />
+                    <Star key={i} className="h-4 w-4 fill-accent text-accent" />
                   ))}
                 </div>
 
                 {/* Quote */}
-                <div className="relative">
-                  <Quote className="h-8 w-8 text-blue-100 absolute -top-2 -left-2" />
-                  <p className="text-gray-700 leading-relaxed pl-6">
+                <div className="relative pt-2">
+                  <Quote className="h-6 w-6 text-primary/20 absolute -top-1 -left-1" />
+                  <p className="text-foreground text-sm leading-relaxed pl-4">
                     {testimonial.content}
                   </p>
                 </div>
 
                 {/* University */}
-                <div className="mt-4 pt-4 border-t">
-                  <div className="text-sm text-gray-600">
-                    <span className="font-medium">University:</span> {testimonial.university}
+                <div className="pt-4 border-t border-border">
+                  <div className="text-xs text-muted-foreground">
+                    <span className="font-medium text-foreground">University:</span> {testimonial.university}
                   </div>
                 </div>
               </CardContent>
@@ -134,23 +134,23 @@ export function Testimonials() {
         </div>
 
         {/* Bottom Stats */}
-        <div className="mt-16 bg-gradient-to-r from-blue-50 to-indigo-50 rounded-2xl p-8">
+        <div className="mt-16 bg-gradient-to-br from-primary/10 to-accent/10 border border-primary/20 rounded-2xl p-8">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
             <div>
-              <div className="text-3xl font-bold text-blue-600 mb-2">5000+</div>
-              <div className="text-gray-600">Students Placed</div>
+              <div className="text-3xl font-bold text-primary mb-2">5000+</div>
+              <div className="text-sm text-muted-foreground">Students Placed</div>
+            </div>
+            <div className="border-l border-primary/20">
+              <div className="text-3xl font-bold text-accent mb-2">95%</div>
+              <div className="text-sm text-muted-foreground">Success Rate</div>
             </div>
             <div>
-              <div className="text-3xl font-bold text-blue-600 mb-2">95%</div>
-              <div className="text-gray-600">Success Rate</div>
+              <div className="text-3xl font-bold text-primary mb-2">15+</div>
+              <div className="text-sm text-muted-foreground">Countries</div>
             </div>
-            <div>
-              <div className="text-3xl font-bold text-blue-600 mb-2">15+</div>
-              <div className="text-gray-600">Countries</div>
-            </div>
-            <div>
-              <div className="text-3xl font-bold text-blue-600 mb-2">4.9/5</div>
-              <div className="text-gray-600">Student Rating</div>
+            <div className="border-l border-primary/20">
+              <div className="text-3xl font-bold text-accent mb-2">4.9/5</div>
+              <div className="text-sm text-muted-foreground">Student Rating</div>
             </div>
           </div>
         </div>
