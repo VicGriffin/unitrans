@@ -13,15 +13,14 @@ export function Hero() {
           <div className="space-y-8 text-center lg:text-left">
             <div className="space-y-4">
               <div className="inline-flex items-center rounded-full border border-gray-200 bg-gray-50 px-2.5 py-0.5 text-xs font-semibold text-gray-700">
-                Trusted by 5000+ Students
+                In Partnership with KC & British Council
               </div>
               <h1 className="text-4xl lg:text-6xl font-bold text-gray-900 leading-tight">
-                Study, Work & Travel Abroad with
-                <span className="text-blue-600"> Expert Guidance</span>
+                Unitrans Visa Solutions
+                <span className="text-blue-600 block text-3xl lg:text-5xl mt-2">Pathway to Abroad Studies</span>
               </h1>
-              <p className="mx-auto max-w-xl text-xl leading-relaxed text-gray-600 lg:mx-0">
-                Transform your dreams into reality with Unitrans Visa Solutions. 
-                Your trusted partner for international education and visa success.
+              <p className="text-xl text-gray-600 leading-relaxed">
+                Kenyan-based study abroad consultancy firm dedicated to helping students pursue higher education opportunities in UK, Canada, USA, Europe, Australia, New Zealand, Ireland, Malaysia, UAE and more countries.
               </p>
             </div>
 
@@ -41,18 +40,22 @@ export function Hero() {
             </div>
 
             {/* Quick Stats */}
-            <div className="grid grid-cols-3 gap-6 pt-8">
+            <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 pt-8">
               <div className="text-center">
-                <div className="text-3xl font-bold text-blue-600">95%</div>
-                <div className="text-sm text-gray-600">Success Rate</div>
-              </div>
-              <div className="text-center">
-                <div className="text-3xl font-bold text-blue-600">15+</div>
+                <div className="text-3xl font-bold text-blue-600">33</div>
                 <div className="text-sm text-gray-600">Countries</div>
               </div>
               <div className="text-center">
-                <div className="text-3xl font-bold text-blue-600">5000+</div>
-                <div className="text-sm text-gray-600">Students</div>
+                <div className="text-3xl font-bold text-blue-600">850+</div>
+                <div className="text-sm text-gray-600">Universities</div>
+              </div>
+              <div className="text-center">
+                <div className="text-3xl font-bold text-blue-600">1M+</div>
+                <div className="text-sm text-gray-600">Course Options</div>
+              </div>
+              <div className="text-center">
+                <div className="text-3xl font-bold text-blue-600">5.7M+</div>
+                <div className="text-sm text-gray-600">Students Assisted</div>
               </div>
             </div>
           </div>

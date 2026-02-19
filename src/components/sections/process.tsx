@@ -1,50 +1,69 @@
 "use client"
 
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { ArrowRight, CheckCircle, FileText, Plane, GraduationCap } from "lucide-react"
+import { CheckCircle, FileText, Plane, CreditCard, FileCheck, Home, Calendar } from "lucide-react"
 
 export function Process() {
   const steps = [
     {
       icon: FileText,
-      title: "Apply",
-      description: "Submit your application with our expert guidance",
-      details: "Document preparation, university selection, application submission"
+      title: "Initiate Application",
+      description: "Start your study abroad journey with us",
+      details: "Submit your details and preferences"
     },
     {
       icon: CheckCircle,
-      title: "Admit",
-      description: "Receive your admission offer letter",
-      details: "Offer letter review, acceptance, enrollment confirmation"
+      title: "Receive Offer Letter",
+      description: "Get admission confirmation from universities",
+      details: "Timeline: 1-7 days"
     },
     {
-      icon: GraduationCap,
-      title: "Visa",
-      description: "Complete your visa application process",
-      details: "Visa documentation, interview preparation, submission"
+      icon: CreditCard,
+      title: "Pay First Semester Fees",
+      description: "Secure your admission spot",
+      details: "Payment confirmation and receipt"
+    },
+    {
+      icon: FileCheck,
+      title: "Enrollment Confirmation",
+      description: "Receive official enrollment letter",
+      details: "Document verification process"
     },
     {
       icon: Plane,
-      title: "Travel",
-      description: "Begin your international education journey",
-      details: "Pre-departure briefing, travel arrangements, accommodation"
+      title: "Visa + Medical + Biometrics",
+      description: "Complete visa formalities",
+      details: "Medical tests, biometrics, insurance"
+    },
+    {
+      icon: Home,
+      title: "Book Accommodation",
+      description: "Secure your housing abroad",
+      details: "Student housing or private options"
+    },
+    {
+      icon: Calendar,
+      title: "Book Flight",
+      description: "Plan your travel arrangements",
+      details: "Student discounts and baggage allowance"
     }
   ]
 
+  const intakes = ["January", "March", "May", "September", "November"]
+
   return (
     <section className="py-20 bg-white">
-      <div className="container mx-auto max-w-5xl">
+      <div className="container">
         <div className="text-center space-y-4 mb-16">
           <h2 className="text-3xl lg:text-4xl font-bold text-gray-900">
-            Your Journey to
-            <span className="text-blue-600"> International Education</span>
+            Application <span className="text-blue-600">Process</span>
           </h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            Our proven 4-step process ensures a smooth and successful journey from application to arrival
+            Our streamlined 7-step process ensures smooth admission to your dream university
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 mb-12">
           {steps.map((step, index) => (
             <div key={step.title} className="relative">
               <Card className="h-full border-2 border-gray-100 hover:border-blue-200 transition-colors">
@@ -68,34 +87,45 @@ export function Process() {
                   </p>
                 </CardContent>
               </Card>
-
-              {/* Arrow Connector */}
-              {index < steps.length - 1 && (
-                <div className="hidden lg:block absolute top-1/2 -right-3 transform -translate-y-1/2 z-10">
-                  <ArrowRight className="h-6 w-6 text-blue-600" />
-                </div>
-              )}
             </div>
           ))}
         </div>
 
-        {/* Bottom CTA */}
-        <div className="text-center mt-12">
-          <div className="bg-blue-50 rounded-2xl p-8 max-w-2xl mx-auto">
-            <h3 className="text-2xl font-bold text-gray-900 mb-4">
-              Ready to Start Your Journey?
-            </h3>
-            <p className="text-gray-600 mb-6">
-              Join thousands of students who have successfully studied abroad with our guidance
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <button className="bg-blue-600 text-white px-8 py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors">
-                Start Application
-              </button>
-              <button className="border border-blue-600 text-blue-600 px-8 py-3 rounded-lg font-semibold hover:bg-blue-50 transition-colors">
-                Download Guide
-              </button>
+        {/* Additional Information */}
+        <div className="grid md:grid-cols-2 gap-8">
+          <div className="bg-blue-50 rounded-2xl p-8">
+            <h3 className="text-2xl font-bold text-gray-900 mb-4">Available Intakes</h3>
+            <div className="flex flex-wrap gap-3">
+              {intakes.map((intake, index) => (
+                <span key={index} className="bg-blue-600 text-white px-4 py-2 rounded-full text-sm font-medium">
+                  {intake}
+                </span>
+              ))}
             </div>
+            <p className="text-gray-600 mt-4">
+              Multiple intake options throughout the year for your convenience
+            </p>
+          </div>
+
+          <div className="bg-gray-50 rounded-2xl p-8">
+            <h3 className="text-2xl font-bold text-gray-900 mb-4">Tuition Fee Range</h3>
+            <p className="text-gray-600 mb-4">
+              Tuition fees vary depending on:
+            </p>
+            <ul className="space-y-2 text-gray-600">
+              <li className="flex items-center space-x-2">
+                <div className="h-2 w-2 bg-blue-600 rounded-full"></div>
+                <span>University ranking and reputation</span>
+              </li>
+              <li className="flex items-center space-x-2">
+                <div className="h-2 w-2 bg-blue-600 rounded-full"></div>
+                <span>Country and location</span>
+              </li>
+              <li className="flex items-center space-x-2">
+                <div className="h-2 w-2 bg-blue-600 rounded-full"></div>
+                <span>Program level and duration</span>
+              </li>
+            </ul>
           </div>
         </div>
       </div>

@@ -99,17 +99,20 @@ export function Footer() {
             <div className="space-y-3">
               <div className="flex items-center space-x-2">
                 <Phone className="h-4 w-4 text-blue-400" />
-                <span className="text-gray-300 text-sm">+254 700 123 456</span>
+                <span className="text-gray-300 text-sm">+254 736 210 172</span>
               </div>
               <div className="flex items-center space-x-2">
                 <Mail className="h-4 w-4 text-blue-400" />
-                <span className="text-gray-300 text-sm">info@unitransvisa.com</span>
+                <div className="text-gray-300 text-sm">
+                  <div>info@unitransvisas.com</div>
+                  <div>unitransvisa@gmail.com</div>
+                </div>
               </div>
               <div className="flex items-center space-x-2">
                 <MapPin className="h-4 w-4 text-blue-400" />
                 <span className="text-gray-300 text-sm">
-                  Nairobi, Kenya<br />
-                  Westlands, Sarit Centre
+                  Spur Mall, 2nd Floor, S28<br />
+                  Thika Road, Ruiru
                 </span>
               </div>
             </div>
